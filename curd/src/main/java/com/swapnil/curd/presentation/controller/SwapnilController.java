@@ -47,4 +47,10 @@ public class SwapnilController {
 		
 		return swapnilService.nn();
 	}
+	
+	@PostMapping("/sayHello")
+	public String sayHello() {
+		
+		return "Hello";
+	}
 }
