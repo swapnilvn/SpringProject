@@ -6,4 +6,6 @@ public interface ItsUserService {
 
 	Map<String, Object> callRestCallData();
 
+	Map<String, Object> getObjectList();
+
 }

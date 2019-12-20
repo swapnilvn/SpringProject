@@ -16,7 +16,7 @@ public class OneEntity implements Serializable{
 	@Id
 	private Integer userId;
     private Integer id;
-   private String title;
-   private String body;
+    private String title;
+    private String body;
    
 }
