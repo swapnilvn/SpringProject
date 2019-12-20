@@ -1,0 +1,51 @@
+{
+	"type": "object",
+	"properties": {
+		"someStringValue": {
+			"type": "string",
+			"default-value": ""
+		},
+		"someLongValue": {
+			"type": "number",
+			"default-value": 0
+		},
+		"someIntValue": {
+			"type": "integer",
+			"default-value": 0
+		},
+		"someFloatValue": {
+			"type": "number",
+			"default-value": 0.0
+		},
+		"someDoubleValue": {
+			"type": "number",
+			"default-value": 0.0
+		},
+		"subMainFile": {
+			"type": "object",
+			"default-value": null,
+			"properties": {
+				"someStringValue": {
+					"type": "string",
+					"default-value": ""
+				},
+				"someLongValue": {
+					"type": "number",
+					"default-value": 0
+				},
+				"someIntValue": {
+					"type": "integer",
+					"default-value": 0
+				},
+				"someFloatValue": {
+					"type": "number",
+					"default-value": 0.0
+				},
+				"someDoubleValue": {
+					"type": "number",
+					"default-value": 0.0
+				}
+			}
+		}
+	}
+}
