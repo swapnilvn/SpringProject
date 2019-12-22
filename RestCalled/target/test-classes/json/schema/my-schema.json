@@ -1,0 +1,26 @@
+{
+"$schema": "http://json-schema.org/draft-04/schema#",
+"title": "mySchema",
+"description": "placeholder",
+"type": "object",
+"properties":
+	{
+	"links":
+		{
+		"type":"array",
+		"minItems":0,
+		"maxItems":3,
+		"items":
+			{
+			"title": "Link Description Object",
+			"type": "object",
+			"required": [ "href", "rel" ],
+			"properties": 
+				{
+				"href": {"format": "uri"},
+				"rel": {"description": "relation to the target resource of the link","type": "string", "enum":["self", "communication", "company"]}
+				}
+			}
+		}
+	}
+}

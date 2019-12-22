@@ -1,12 +1,15 @@
 package com.swapnil.RestCalled.business.serviceImpl;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -21,20 +24,35 @@ public class ItsUserServiceimpl implements ItsUserService{
 	private RestTemplate restTemplate;
 
 	@Override
-	public Map<String, Object> callRestCallData() {
-		
+	public Map<String, Object> callRestCallData() 
+	{
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		String url = "https://jsonplaceholder.typicode.com/posts";
-		ResponseEntity<OneEntity[]> response = restTemplate.exchange(url, HttpMethod.GET,null,OneEntity[].class);
 		
-//		for(OneEntity en : response.getBody())
-//		{
-//			System.out.println(en.getId()+" "+en.getTitle()+" "+en.getBody());
-//		}
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
-		map.put("Data", response.getBody());
+		HttpEntity<Object> requestEntity = new HttpEntity<Object>(headers);
+		
+//		ResponseEntity<OneEntity[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, OneEntity[].class);
+		ResponseEntity<List> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, List.class);
+		
+		displayObjectContaints(responseEntity);
+		
+		map.put("statusCode", responseEntity.getStatusCode());
+		map.put("Headers", responseEntity.getHeaders());
+		map.put("Data", responseEntity.getBody());
 		return map;
+	}
+	
+	public void displayObjectContaints(ResponseEntity<List> listObj)
+	{
+		for(Object oo : listObj.getBody())
+		{
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------START");
+			System.out.println(oo.toString());
+			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------END");
+		}
 	}
 	
 	@Override
