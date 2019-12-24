@@ -1,0 +1,6 @@
+server:
+  port: 7001  servlet:    context-path: /discovery-service
+
+spring:
+   application:
+    name: discovery-service   

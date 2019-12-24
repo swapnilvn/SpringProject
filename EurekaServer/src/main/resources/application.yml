@@ -1,0 +1,17 @@
+spring:
+   jmx:
+    default-domain: discovery-service  
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 30000
+  instance:
+   lease-expiration-duration-in-seconds: 10000
+   hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false        
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/EurekaServer/eureka/
+      
+      

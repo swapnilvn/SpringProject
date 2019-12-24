@@ -1,0 +1,11 @@
+{
+  "hints": [],
+  "groups": [],
+  "properties": [
+    {
+      "name": "eureka",
+      "description": "A description for 'eureka'",
+      "type": "java.lang.String"
+    }
+  ]
+}

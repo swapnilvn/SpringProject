@@ -2,7 +2,6 @@ package com.swapnil.RestCalled.business.serviceImpl;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +33,10 @@ public class ItsUserServiceimpl implements ItsUserService{
 		
 		HttpEntity<Object> requestEntity = new HttpEntity<Object>(headers);
 		
-//		ResponseEntity<OneEntity[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, OneEntity[].class);
-		ResponseEntity<List> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, List.class);
+		ResponseEntity<OneEntity[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, OneEntity[].class);
+//		ResponseEntity<List> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, List.class);
 		
-		displayObjectContaints(responseEntity);
+		displayObjectContaints(responseEntity.getBody());
 		
 		map.put("statusCode", responseEntity.getStatusCode());
 		map.put("Headers", responseEntity.getHeaders());
@@ -45,9 +44,9 @@ public class ItsUserServiceimpl implements ItsUserService{
 		return map;
 	}
 	
-	public void displayObjectContaints(ResponseEntity<List> listObj)
+	public void displayObjectContaints(OneEntity[] listObj)
 	{
-		for(Object oo : listObj.getBody())
+		for(OneEntity oo : listObj)
 		{
 			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------START");
 			System.out.println(oo.toString());
