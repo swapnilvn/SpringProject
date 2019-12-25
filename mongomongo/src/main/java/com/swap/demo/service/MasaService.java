@@ -10,4 +10,9 @@ public interface MasaService {
 
 	Map<String, Object> getData();
 
+	Map<String, Object> getById(Long id);
+
+	Long deleteById(Long id);
+
+	Map<String, Object> activeInactive(Long id, Boolean active);
 }

@@ -14,4 +14,5 @@ public class Masa implements Serializable{
 	private Long id;
 	private String name;
 	private Date dob;
+	private Boolean active;
 }

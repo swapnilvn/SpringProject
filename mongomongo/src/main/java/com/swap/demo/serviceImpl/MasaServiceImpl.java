@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,24 @@ public class MasaServiceImpl implements MasaService {
 		Masa masa = null;
 		if(masaDto != null)
 		{
-			masa = new Masa();
-			BeanUtils.copyProperties(masaDto, masa);
-			masa.setDob(new Date());
-			masaRepository.save(masa);
+			if(masaDto.getId() != null)
+			{
+				Optional<Masa> masa2 = masaRepository.findById(masaDto.getId());
+				
+				if(masa2.isPresent())
+				{
+					BeanUtils.copyProperties(masaDto, masa2.get());
+					masaRepository.save(masa2.get());
+				}
+				else
+				{
+					masa = new Masa();
+					BeanUtils.copyProperties(masaDto, masa);
+					masa.setDob(new Date());
+					masaRepository.save(masa);
+				}
+			}
+			
 		}
 		map.put("200", "Done");
 		return map;
@@ -51,6 +66,36 @@ public class MasaServiceImpl implements MasaService {
 			dtosList.add(masaDto);
 		}
 		map.put("dtosList", dtosList);
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> getById(Long id) {
+		Map<String, Object>map= new HashMap<>();
+		Optional<Masa> masa = masaRepository.findById(id);
+		map.put("masa", masa);
+		return map;
+	}
+
+	@Override
+	public Long deleteById(Long id) {
+		masaRepository.deleteById(id);
+		return id;
+	}
+
+	@Override
+	public Map<String, Object> activeInactive(Long id, Boolean active) {
+		Map<String, Object>map = new HashMap<>();
+		if(id != null)
+		{
+			Optional<Masa> masa = masaRepository.findById(id);
+			if(masa.isPresent())
+			{
+				masa.get().setActive(active);
+				masaRepository.save(masa.get());
+				map.put("200", "Done");
+			}
+		}
 		return map;
 	}
 

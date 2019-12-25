@@ -1,0 +1,8 @@
+com\swap\demo\service\MasaService.class
+com\swap\demo\controller\MasaController.class
+com\swap\demo\ServletInitializer.class
+com\swap\demo\domain\Masa.class
+com\swap\demo\repository\MasaRepository.class
+com\swap\demo\MongomongoApplication.class
+com\swap\demo\dto\MasaDto.class
+com\swap\demo\serviceImpl\MasaServiceImpl.class
