@@ -37,9 +37,9 @@ public class MasaController {
 	}
 	
 	@GetMapping("/getById")
-	public Map<String, Object>getById(@RequestParam ("id") Long id)
+	public Map<String, Object>getById(@RequestParam ("id") Long id, Boolean active)
 	{
-		return masaService.getById(id);
+		return masaService.getById(id, active);
 	}
 	
 	@DeleteMapping("/deleteById")

@@ -70,9 +70,9 @@ public class MasaServiceImpl implements MasaService {
 	}
 
 	@Override
-	public Map<String, Object> getById(Long id) {
+	public Map<String, Object> getById(Long id, Boolean active) {
 		Map<String, Object>map= new HashMap<>();
-		Optional<Masa> masa = masaRepository.findById(id);
+		Optional<Masa> masa = masaRepository.findByIdAndActive(id, active);
 		map.put("masa", masa);
 		return map;
 	}
